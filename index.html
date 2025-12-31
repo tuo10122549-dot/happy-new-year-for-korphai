@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy New Year ❤️</title>
+
+  <style>
+.card {
+  position: relative;
+  background: white;
+  padding: 35px;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 380px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+  animation: fadeIn 1.5s ease;
+  z-index: 10;
+
+  /* 🌸 ลวดลายกรอบ */
+  border: 3px solid #ffb3c6;
+}
+
+/* ❤️ หัวใจมุมกรอบ */
+.card::before,
+.card::after {
+  content: "❤️";
+  position: absolute;
+  font-size: 18px;
+}
+
+.card::before {
+  top: -10px;
+  left: -10px;
+}
+
+.card::after {
+  bottom: -10px;
+  right: -10px;
+}
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd6e0, #fff1f5);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      text-align: center;
+      max-width: 380px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+      animation: fadeIn 1.5s ease;
+      z-index: 10;
+    }
+
+    h1 {
+      color: #ff5d8f;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #ff5d8f;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e84a7a;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ❤️ เอฟเฟกต์หัวใจ */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      color: #ff5d8f;
+      animation: floatUp 4s linear forwards;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎵 เพลง -->
+  <audio id="bgm" loop>
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 💌 การ์ดข้อความ -->
+  <div class="card">
+    <h1>🎆  สุขสันต์วันปีใหม่ 🎆</h1>
+    <p id="message">
+      ถึง <b>กอไผ่สุดน่ารักกก</b>❤️<br>
+      เค้าไม่รู้จะทำอะไรให้เธอดี<br>เเต่อันนี้เค้าตั้งใจทำให้เธอเลยนะครับบ<br>
+            วันนี้ที่เค้าไปมอมาก็นั่งเรียนเขียนโค้ดนี้เเละ
+      ขอบคุณเธอมากทำให้สดใสเเละมีความสุขขึ้นเยอะเลย เธอเป็นคนที่น่ารักมากนะครับ
+            เค้านะตั้งใจกับเธอมากๆ เราผ่านการเเลกเปลี่ยนความคิดเเละการปรับตัวให้โอเคซึ่งกันเเละกัน
+            มีดีบางเเย่เเต่เค้าก็ขอบคุณเธฮอีกครั้งที่พร้อมจะปรับตัวเเละเเก้ไขสิ่งต่างๆไปกับเค้า
+            เค้าก็อยากน่ารักกับเธอทุกวันเลยยย <br>ลองกดดูคำอธิฐานเค้าดูๆอิอิ เขินๆ
+    </p>
+    <button onclick="startLove()">กดเบา ๆ นะ 💕</button>
+  </div>
+
+  <!-- ✨ JavaScript -->
+  <script>
+    function startLove() {
+      document.getElementById("message").innerHTML =
+        "ปีใหม่นี้เค้าอยากให้เธอมีความสุข <br>สุขภาพเเข็งเเรงมากๆเลยน้าา คิดอะไรก็ขอให้สมหวังนะครับ 🌈<br>" +
+        "ในวันที่ดี และวันที่ไม่ค่อยดี<br><br>" +
+        "เค้ารักเธอมากขึ้นทุกวันนะ ❤️";
+
+      document.getElementById("bgm").play();
+
+      setInterval(createHeart, 300);
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (16 + Math.random() * 20) + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
